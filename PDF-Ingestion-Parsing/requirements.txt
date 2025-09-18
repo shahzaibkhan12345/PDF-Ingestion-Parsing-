@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+pymupdf
+tesseract
+opencv-python
+scikit-learn # For langdetect
+numpy
+pandas
+pydantic
+streamlit
+langdetect
