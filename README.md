@@ -2,7 +2,7 @@
 
 **DeepScan AI** is a powerful tool designed to ingest and parse PDF documents, transforming them into a structured JSONL format, perfect for AI/ML model training and data analysis.
 
-![DeepScan AI Screenshot](Diagrams/png) 
+![DeepScan AI Screenshot](Diagrams/image.png) 
 *Note: The screenshot is a representative example of a Streamlit application.*
 
 ---
