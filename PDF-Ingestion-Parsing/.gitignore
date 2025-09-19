@@ -6,4 +6,5 @@ __pycache__/
 # IDEs
 .idea/
 .vscode/
-./Diagrams
+# Ignore Diagrams folder
+PDF-Ingestion-Parsing/Diagrams/
