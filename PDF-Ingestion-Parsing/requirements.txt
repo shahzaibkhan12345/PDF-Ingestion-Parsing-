@@ -10,3 +10,4 @@ pandas
 pydantic
 streamlit
 langdetect
+paddleocr
