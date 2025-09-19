@@ -13,6 +13,62 @@ This project addresses the common challenge of extracting structured information
 
 The output is a clean, line-delimited JSON (JSONL) file, an ideal format for feeding into machine learning pipelines, fine-tuning large language models, or populating databases.
 
+## 📐 System Architecture
+
+The following diagram illustrates the overall architecture of **DeepScan AI**:
+
+```mermaid
+graph TD
+
+    subgraph Frontend [💻 Streamlit Frontend]
+        A[📂 User Uploads PDF]
+        B[➡️ Sends POST /api/docs/upload]
+        N[⬇️ Downloads JSONL Output]
+    end
+
+    subgraph Backend [⚡ FastAPI Backend]
+        C[📥 Receives Upload Request]
+        D[🛡️ Virus Scan (ClamAV)]
+        E[☁️ Store Original in MinIO S3]
+        F[⚙️ Ingestion Orchestrator]
+    end
+
+    subgraph CoreLogic [🧠 Core Logic (app/services/)]
+        subgraph PDFParser
+            H[📖 Extract Text (PyMuPDF/pdfminer)]
+            I[🔎 OCR Fallback (Tesseract/pdf2image)]
+            J[📑 Structural Parsing (Sections, References)]
+            K[✂️ Chunking (500–1000 tokens)]
+            L[📝 Attach Metadata + Language Detection]
+        end
+    end
+
+    subgraph Storage [🗄️ Databases]
+        O[(Postgres DB)]
+        P[(MinIO S3 Bucket)]
+    end
+
+    subgraph AIandExport [🤖 AI & Export Layer]
+        Q[🔗 DeepSeek Client (GROQ API)]
+        R[📤 Export to JSONL Training Corpus]
+    end
+
+    %% Flow
+    A --> B --> C
+    C --> D --> E
+    E --> F
+    F --> H
+    F --> I
+    H --> J
+    I --> J
+    J --> K
+    K --> L
+    L --> O
+    L --> R
+    R --> N
+    L --> Q --> R
+    E --> P
+
 ## ✨ Key Features
 
 - **Intuitive Web Interface**: A modern, responsive UI built with Streamlit.
