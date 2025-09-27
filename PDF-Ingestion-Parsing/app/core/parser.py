@@ -22,8 +22,7 @@ SECTION_PATTERNS = {
     "methods": re.compile(r"^\s*\d\.?\s*methods\s*$", re.IGNORECASE),
     "results": re.compile(r"^\s*\d\.?\s*results\s*$", re.IGNORECASE),  # This is the corrected line
     "conclusion": re.compile(r"^\s*\d\.?\s*conclusion\s*$", re.IGNORECASE),
-    "references": re.compile(r"^\s*references\s*$", re.IGNORECASE),
-    # Add more patterns as needed
+    "references": re.compile(r"^\s*references\s*$", re.IGNORECASE)
 }
 
 def clean_text(text: str) -> str:
